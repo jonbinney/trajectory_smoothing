@@ -6,7 +6,6 @@ from matplotlib import pyplot as plt
 import matplotlib.patches
 import matplotlib.collections
 import numpy as np
-
 import traj
 
 # Test path
@@ -33,5 +32,6 @@ for point_i in range(len(path)):
     plt.text(point[0], point[1], 'waypoint_{}'.format(point_i))
 
 plt.gca().set_aspect('equal')
+
 plt.legend()
 plt.show()
