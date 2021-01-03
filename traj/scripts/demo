@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 Simple example that parametrizes a 2d joint-space path.
 """
@@ -109,6 +109,10 @@ goal = create_joint_trajectory_goal(trajectory_position_function, joint_names, s
 if execute:
     follow_trajectory_client.send_goal(goal)
     follow_trajectory_client.wait_for_result()
+
+# Let rospy finish up before we turn the main thread over to matplotlib. This just
+# avoids warnings about dropped connections from other nodes.
+rospy.signal_shutdown()
 
 if plot:
     traj.plot.plot_trajectory(plt.figure(), trajectory_position_function, trajectory_velocity_function,

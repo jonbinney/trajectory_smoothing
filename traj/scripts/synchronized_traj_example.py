@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 '''
 example to check the joint motion synchronization algorithm [full trajectory] 
 '''

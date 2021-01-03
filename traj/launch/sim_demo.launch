@@ -3,19 +3,17 @@
   <arg name="plot" default="false"/>
 
   <!-- Load robot model -->
-  <include file="$(find fanuc_m20ib_support)/launch/load_m20ib25.launch" />
+  <include file="$(find traj)/launch/include/load_demo_arm.launch.xml" />
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
-  <!-- industrial_robot_simulator: accepts robot commands and reports status -->
-  <rosparam param="controller_joint_names">['joint_1', 'joint_2', 'joint_3', 'joint_4', 'joint_5', 'joint_6']</rosparam>
-  <node pkg="industrial_robot_simulator" type="industrial_robot_simulator" name="industrial_robot_simulator"/>
-  <node pkg="industrial_robot_client" type="joint_trajectory_action" name="joint_trajectory_action"/>
+  <!--
+  <node name="dummy_joint_trajectory_server" pkg="traj" type="dummy_joint_trajectory_server" />-->
 
   <node pkg="traj" type="demo" name="traj_demo">
     <param name="plot" value="$(arg plot)"/>
     <param name="execute" value="true"/>
   </node>
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find industrial_robot_client)/config/robot_state_visualize.rviz" required="true" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find traj)/config/demo.rviz" required="true" />
 
 </launch>
