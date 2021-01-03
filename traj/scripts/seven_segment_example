@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 Simple example that computes a seven segment motion profile a 1d motion with given start and
 end positions. Start and end velocity/acceleration/jerk are assumed to be zero.

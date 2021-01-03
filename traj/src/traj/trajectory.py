@@ -67,9 +67,9 @@ def trajectory_for_path(path, max_velocities, max_accelerations, max_jerks):
         # Substitute time profile for s into the path function to get trajectory as a function of t.
         for function_i in range(len(s_position.functions)):
             position_vs_t = fsegment.subs(s, s_position.functions[function_i])
-            velocity_vs_t = diff(position_vs_t)
-            acceleration_vs_t = diff(velocity_vs_t)
-            jerk_vs_t = diff(acceleration_vs_t)
+            velocity_vs_t = diff(position_vs_t, t)
+            acceleration_vs_t = diff(velocity_vs_t, t)
+            jerk_vs_t = diff(acceleration_vs_t, t)
             trajectory_position_functions.append(position_vs_t)
             trajectory_velocity_functions.append(velocity_vs_t)
             trajectory_acceleration_functions.append(acceleration_vs_t)
