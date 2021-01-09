@@ -112,7 +112,7 @@ if execute:
 
 # Let rospy finish up before we turn the main thread over to matplotlib. This just
 # avoids warnings about dropped connections from other nodes.
-rospy.signal_shutdown()
+rospy.signal_shutdown('Node done')
 
 if plot:
     traj.plot.plot_trajectory(plt.figure(), trajectory_position_function, trajectory_velocity_function,
