@@ -2,11 +2,17 @@ import time
 
 from matplotlib import pyplot as plt
 import numpy as np
+import sympy
+
 import traj.segmented_trajectory
 
+sympy.init_printing()
 
 trajectory = traj.segmented_trajectory.SegmentedTrajectory(
     1.0, [1, -1, 1], 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+
+print(trajectory.state_eq)
+
 print(trajectory.error_function([0.0, 0.0, 0.0]))
 
 trajectory = traj.segmented_trajectory.SegmentedTrajectory(1.0, [1, -1, 1], 0.0, 0.0, 0.0, 1.0, 0.0, 0.0)

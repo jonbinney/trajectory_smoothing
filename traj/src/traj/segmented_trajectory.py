@@ -13,8 +13,9 @@ def generate_trajectory_equations(jerk_directions):
     acceleration = sympy.Symbol('a_start')
     for i, jerk in enumerate(jerk_arr):
         delta = delta_variables[i]
-        position += velocity * delta + 0.5 * acceleration * delta ** 2 + 1. / 6. * jerk * delta ** 3
-        velocity += acceleration * delta + 0.5 * jerk * delta ** 2
+        position += velocity * delta + sympy.Rational(1, 2) * acceleration * delta ** 2 + \
+                    sympy.Rational(1, 6) * jerk * delta ** 3
+        velocity += acceleration * delta + sympy.Rational(1, 2) * jerk * delta ** 2
         acceleration += jerk * delta
 
     state_eq = sympy.Matrix([position, velocity, acceleration])
@@ -50,6 +51,8 @@ class SegmentedTrajectory:
         return self.state_jacobian_lambda(*delta_values)
 
     def error_function(self, x):
+        x = np.asarray(x)
+
         # Durations must be positive.
         delta_values = x**2
 
