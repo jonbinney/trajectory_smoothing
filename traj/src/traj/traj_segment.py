@@ -154,13 +154,11 @@ def calculate_jerk_sign_and_duration(p_start, p_end, v_start, v_end, p_max, v_ma
     # 2)simple motion:  positive or negative velocity, v0 and vf have same sign 
     else:
         # same action will be performed in both simple +ve or simple -ve motion, this part can be used later 
-        # A) simple positive motion
         if(v_start >= 0 and v_end >= 0): # case one: both are positive
             rospy.logdebug("\n\n>>>simple postive motion: {}, {}, {}, {} ".format(p_start, p_end, v_start, v_end))
-
-        # B) simple negative motion                        
         elif (v_start <= 0 and v_end <= 0): # case two: both are negative
             rospy.logdebug("\n\n>>>simple negative motion: {}, {}, {}, {} ".format(p_start, p_end, v_start, v_end))
+
         t_jrk_to_vf, t_acc_to_vf, t_jrk, t_acc, t_vel = traj.traj_segment_planning(p_start, p_end, abs_v_start, abs_v_end, v_max, a_max, j_max)
         j_max_to_vf, j_max = assign_jerk_sign_According_to_motion_type(p_start, p_end, v_start, v_end, p_max, v_max, a_max, j_max)
         if abs_v_end > abs_v_start:

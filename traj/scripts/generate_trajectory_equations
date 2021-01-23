@@ -1,0 +1,14 @@
+import time
+
+from matplotlib import pyplot as plt
+import numpy as np
+import traj.segmented_trajectory
+
+
+trajectory = traj.segmented_trajectory.SegmentedTrajectory(
+    1.0, [1, -1, 1], 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+print(trajectory.error_function([0.0, 0.0, 0.0]))
+
+trajectory = traj.segmented_trajectory.SegmentedTrajectory(1.0, [1, -1, 1], 0.0, 0.0, 0.0, 1.0, 0.0, 0.0)
+print(trajectory.error_function([1.0, 2.0, 1.0]))
+trajectory.optimize()

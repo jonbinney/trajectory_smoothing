@@ -4,13 +4,16 @@ Simple example that fits general trajectory segment, given the start and
 end positions/velocities. Start and end acceleration/jerk are assumed to be zero.
 """
 from matplotlib import pyplot as plt
+import time
 import traj
 
 
 def test_seven_segment(p_start, p_end, v_start, v_end, p_max, v_max, a_max, j_max):
+    t0 = time.time()
     position, velocity, acceleration, jerk = traj.fit_traj_segment(p_start, p_end, v_start, v_end, p_max, v_max, a_max, j_max)
-    traj.plot.plot_trajectory(plt, position, velocity, acceleration, jerk, n_points=100, v_max=v_max, a_max=a_max, j_max=j_max)
-    plt.show()
+    print(time.time() - t0)
+    #traj.plot.plot_trajectory(plt.gcf(), position, velocity, acceleration, jerk, n_points=100, v_max=v_max, a_max=a_max, j_max=j_max)
+    #plt.show()
     
 p_max=30
 v_max=3.0
@@ -19,7 +22,7 @@ j_max=10.0
 
 ############### CASE A: v_start = v_end = 0    
 #case A1:  no limit is reached     
-test_seven_segment(0.0, 1.0,      0.0, 0.0,     p_max, v_max, a_max, j_max)    
+test_seven_segment(0.0, 1.0,      0.0, 0.0,     p_max, v_max, a_max, j_max)
 #case A2:  acc_limit is reached     
 test_seven_segment(0.0, 3.0,      0.0, 0.0,     p_max, v_max, a_max, j_max)    
 #case A3:  vel_limit and acc_limit are reached    

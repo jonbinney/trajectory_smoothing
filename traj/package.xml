@@ -12,6 +12,7 @@
 
   <exec_depend>python3-matplotlib</exec_depend>
   <exec_depend>python3-numpy</exec_depend>
+  <exec_depend>python3-pytest</exec_depend>
   <exec_depend>python3-sympy</exec_depend>
 
   <!-- Needed for launching the demo -->
