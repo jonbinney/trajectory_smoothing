@@ -10,11 +10,10 @@ sympy.init_printing()
 
 trajectory = traj.segmented_trajectory.SegmentedTrajectory(
     1.0, [1, -1, 1], 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+solution = trajectory.optimize()
+print(solution)
 
-print(trajectory.state_eq)
-
-print(trajectory.error_function([0.0, 0.0, 0.0]))
-
-trajectory = traj.segmented_trajectory.SegmentedTrajectory(1.0, [1, -1, 1], 0.0, 0.0, 0.0, 1.0, 0.0, 0.0)
-print(trajectory.error_function([1.0, 2.0, 1.0]))
-trajectory.optimize()
+if 0:
+    trajectory = traj.segmented_trajectory.SegmentedTrajectory(1.0, [1, -1, 1], 0.0, 0.0, 0.0, 1.0, 0.0, 0.0)
+    print(trajectory.error_function([1.0, 2.0, 1.0]))
+    trajectory.optimize()
